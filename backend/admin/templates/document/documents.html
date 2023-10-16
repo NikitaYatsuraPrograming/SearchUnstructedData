@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}  
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="container py-5">
+  <h1>Documents</h1>
+  {% if document_list %}
+    <ul>
+      {% for document in document_list %}
+      <li>
+        <a href="{{ document.get_absolute_url }}">{{ document.title }}</a>
+        <p>{{ document.description|slice:":50" }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}
+</div>
+<div class="pagination d-flex justify-content-center">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="{% if search_query_param %}?search={{ search_query_param }}&{% else %}?{% endif %}page=1">&laquo; first</a>
+            <a href="{% if search_query_param %}?search={{ search_query_param }}&{% else %}?{% endif %}page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="{% if search_query_param %}?search={{ search_query_param }}&{% else %}?{% endif %}page={{ page_obj.next_page_number }}">next</a>
+            <a href="{% if search_query_param %}?search={{ search_query_param }}&{% else %}?{% endif %}page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

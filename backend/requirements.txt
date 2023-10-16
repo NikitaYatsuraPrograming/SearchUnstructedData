@@ -1,0 +1,32 @@
+asgiref==3.6.0
+pip==21.3.1
+setuptools==60.2.0
+sqlparse==0.4.2
+wheel==0.37.1
+
+# Django
+Django==4.2
+django-lifecycle==1.0.0
+django-filter==22.1
+
+# wsqi server
+uvicorn>=0.18.3
+
+# database
+psycopg2-binary>=2.9.1
+
+# DB faker
+Faker==14.2.0
+
+# Redis
+django-redis==5.2.0
+
+# Flake8
+flake8==5.0.4
+
+# Logger
+loguru==0.6.0
+
+# Bootstrap
+django-crispy-forms==2.1
+crispy-bootstrap5==0.7

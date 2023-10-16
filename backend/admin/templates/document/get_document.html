@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="container py-5">
+    <h1>Documents</h1>
+    <h1>{{ object.title }}</h1>
+    <p>{{ object.description }}</p>
+    <p>Status: {{ object.get_status_display }}</p>
+    <p>Time Last Search: {% if object.time_last_search %} {{ object.time_last_search }} {% else %} You haven't searched for this file yet {% endif %}</p>
+
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-primary" style="margin-right: 28px" href="http://0.0.0.0:8080/document/{{object.pk}}/update/" role="button">Update</a>
+        <a class="btn btn-danger" href="http://0.0.0.0:8080/document/{{object.pk}}/delete/" role="button">Delete</a>
+    </div>
+
+</div>
+{% endblock %}
