@@ -4,6 +4,7 @@ from . import views
 app_name = 'document'
 
 urlpatterns = [
+    path('', views.index, name='index'),
     path('documents/', views.DocumentListView.as_view(), name='documents'),
     path('document/<slug:pk>/', views.DocumentDetailView.as_view(), name='get_document'),
     path('document/<slug:pk>/update/', views.DocumentUpdateView.as_view(), name='update_document'),

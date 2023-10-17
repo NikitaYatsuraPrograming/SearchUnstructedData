@@ -9,6 +9,10 @@ from .mixins import UserDocumentMixin
 from .utils import save_history_search_document
 
 
+def index(request):
+    return redirect("document:documents")
+
+
 class DocumentListView(LoginRequiredMixin, UserDocumentMixin, ListView):
     template_name = 'document/documents.html'
     paginate_by = 10
